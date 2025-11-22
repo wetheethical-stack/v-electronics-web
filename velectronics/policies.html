@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Policies | V • ELECTRONICS</title>
+  <link rel="icon" type="image/jpeg" href="VLOGO.jpg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    /* ===== RESET ===== */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:"Poppins",sans-serif;
+      color:#fff;
+      background:#050505;
+      overflow-x:hidden;
+      position:relative;
+      min-height:100vh;
+    }
+
+    /* ===== MOTION BACKGROUND ===== */
+    .motion-bg{
+      position:fixed;
+      top:0;left:0;
+      width:200%;height:200%;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(0,255,204,0.07), transparent 70%),
+        radial-gradient(circle at 75% 75%, rgba(255,0,255,0.07), transparent 70%);
+      animation:moveBg 25s ease-in-out infinite alternate;
+      z-index:0;
+      filter:blur(100px);
+      pointer-events: none;
+    }
+    @keyframes moveBg{
+      from{transform:translate(0,0) scale(1);}
+      to{transform:translate(-10%,-10%) scale(1.2);}
+    }
+
+    /* ===== FLOATING PARTICLES ===== */
+    .particle{position:absolute;border-radius:50%;opacity:0.5;animation:floatParticles linear infinite;}
+    .particle:nth-child(2){width:12px;height:12px;background:#0ff;top:20%;left:10%;animation-duration:10s;}
+    .particle:nth-child(3){width:18px;height:18px;background:#f0f;top:70%;left:85%;animation-duration:12s;}
+    .particle:nth-child(4){width:14px;height:14px;background:#ff0;top:40%;left:50%;animation-duration:15s;}
+    @keyframes floatParticles{0%{transform:translateY(0) translateX(0);}50%{transform:translateY(-30px) translateX(20px);}100%{transform:translateY(0) translateX(0);}}
+
+    /* ===== HEADER ===== */
+    header{position:fixed;top:0;left:0;width:100%;padding:15px 50px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(10px);background:rgba(0,0,0,0.7);border-bottom:1px solid rgba(0,255,255,0.1);z-index:100;}
+    header img{height:48px;animation:logoGlow 2s infinite ease-in-out;}
+    @keyframes logoGlow{0%,100%{filter:drop-shadow(0 0 10px #0ff);}50%{filter:drop-shadow(0 0 25px #0ff);}}
+
+    /* NAVIGATION LINKS */
+    nav{display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-end;}
+    nav a{color:#fff;text-decoration:none;font-weight:600;position:relative;padding:8px 10px;transition:0.3s;}
+    nav a::after{content:'';position:absolute;left:8px;right:8px;bottom:0;height:2px;background:linear-gradient(90deg,#0ff,#f0f);transform:scaleX(0);transform-origin:bottom right;transition:transform 0.3s ease-out;}
+    nav a:hover::after,nav a.active::after{transform:scaleX(1);transform-origin:bottom left;}
+    nav a:hover{color:#0ff;text-shadow:0 0 10px #0ff;}
+    nav a.highlight{color:#0ff;text-shadow:0 0 8px #0ff;}
+
+    /* ===== MAIN CONTENT ===== */
+    main{position:relative;z-index:1;padding:160px 12% 100px 12%;display:flex;flex-direction:column;gap:30px;}
+    h1{font-family:'Orbitron',sans-serif;font-size:2.8rem;text-align:center;color:#0ff;text-shadow:0 0 20px rgba(0,255,255,0.4);margin-bottom:10px;animation:fadeInDown 1.2s ease both;}
+    @keyframes fadeInDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}
+
+    .policy-card{background:rgba(15,15,15,0.85);border:1px solid rgba(0,255,255,0.1);border-radius:18px;padding:30px;backdrop-filter:blur(10px);box-shadow:0 0 25px rgba(0,255,255,0.05);transition:transform 0.4s ease, box-shadow 0.4s ease;animation:fadeUp 1s ease both;}
+    .policy-card:hover{transform:translateY(-5px);box-shadow:0 0 35px rgba(0,255,255,0.2);}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);} }
+
+    .policy-card h2{font-size:1.3rem;color:#00ffee;border-left:4px solid #0ff;padding-left:12px;margin-bottom:10px;}
+    .policy-card ul{margin-left:20px;}
+    .policy-card li{color:#ccc;line-height:1.7;margin-bottom:5px;}
+    .policy-card p{color:#ccc;line-height:1.7;}
+
+    /* ===== FOOTER ===== */
+    footer{position:relative;z-index:2;text-align:center;background:rgba(10,10,10,0.95);padding:35px 10px;color:#aaa;font-size:0.9rem;border-top:1px solid rgba(0,255,255,0.1);}
+    footer a{color:#0ff;text-decoration:none;margin:0 10px;pointer-events:auto;}
+    footer a:hover{text-decoration:underline;}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:900px){
+      header{flex-direction:column;gap:8px;padding:15px 25px;text-align:center;}
+      nav{justify-content:center;}
+      main{padding:140px 6% 60px 6%;}
+      h1{font-size:2rem;}
+      .policy-card{padding:20px;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="motion-bg"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+
+  <header>
+    <a href="index.html"><img src="VLOGO.jpg" alt="V Electronics Logo"></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="warehouse.html">Arrivals</a>
+      <a href="warehouse.html">Warehouse</a>
+      <a href="warehouse.html">Blogs</a>
+      <a href="policies.html" class="active">Policies</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Our Company Policies</h1>
+
+    <div class="policy-card">
+      <p>V • ELECTRONICS believes in building trust through transparency. Our policies define how we handle data, service commitments, community engagement, and product safety to ensure you always receive quality and reliability.</p>
+    </div>
+
+    <div class="policy-card">
+      <h2>🔐 Privacy Policy</h2>
+      <ul>
+        <li>We never share customer data with third parties.</li>
+        <li>Payment information is securely encrypted via PCI DSS standards.</li>
+        <li>Cookies are used only to enhance website performance.</li>
+        <li>You can request data deletion anytime by contacting <span style="color:#0ff;">privacy@velectronics.tech</span>.</li>
+      </ul>
+    </div>
+
+    <div class="policy-card">
+      <h2>🧾 Warranty & Returns</h2>
+      <ul>
+        <li>Every product is covered under a 1-year limited warranty for manufacturing defects.</li>
+        <li>Returns accepted within 15 days of delivery.</li>
+        <li>Defective products replaced after quality inspection.</li>
+        <li>Custom-made boards or prototypes are non-returnable unless defective.</li>
+        <li>All returns must include original packaging and invoice.</li>
+      </ul>
+    </div>
+
+    <div class="policy-card">
+      <h2>🚚 Shipping & Delivery</h2>
+      <ul>
+        <li>We ship to 7686+ pin codes across India with trusted logistics partners.</li>
+        <li>Orders processed within 24–48 hours.</li>
+        <li>Express delivery available for selected cities.</li>
+        <li>Tracking details shared instantly via email.</li>
+        <li>In case of damage during transit, we offer instant replacement.</li>
+      </ul>
+    </div>
+
+    <div class="policy-card">
+      <h2>🧠 Intellectual Property</h2>
+      <ul>
+        <li>All circuits, codebases, and robotic frameworks are protected by copyright and trademark laws.</li>
+        <li>Reproduction, reselling, or repackaging without written permission is prohibited.</li>
+        <li>All brand logos and visual identities are property of V • ELECTRONICS.</li>
+      </ul>
+    </div>
+
+    <div class="policy-card">
+      <h2>🤝 Community & Conduct</h2>
+      <ul>
+        <li>No spam, harassment, or offensive content allowed in forums.</li>
+        <li>Maintain professionalism during hackathons and live events.</li>
+        <li>Violation of community guidelines may result in account suspension.</li>
+      </ul>
+    </div>
+
+    <div class="policy-card">
+      <h2>⚙️ Product Safety & Compliance</h2>
+      <ul>
+        <li>All products undergo safety testing and comply with Indian electronic standards.</li>
+        <li>RoHS, ISO 9001:2015, BIS certified.</li>
+        <li>Battery-operated modules follow IEC 62133 guidelines.</li>
+        <li>Environment-friendly manufacturing with minimal waste policy.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <p><b>V • ELECTRONICS</b> — Built for dreamers, by engineers. We don’t just make hardware — we redefine it.</p>
+    <p style="margin:10px 0;">
+      <a href="warehouse.html">Explore</a> | <a href="cooked.html">Careers</a> | <a href="policies.html">Policies</a> | <a href="warehouse.html">Information</a>
+    </p>
+    <p>Email: hello@velectronics.tech | Phone: +91 90000 00000</p>
+    <p>© 2025 V Electronics — Built with ⚡ by innovators</p>
+  </footer>
+
+</body>
+</html>

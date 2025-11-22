@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let Him Cook 🔥 | V • ELECTRONICS</title>
+<link rel="icon" type="image/jpeg" href="VLOGO.jpg">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;500;600&display=swap');
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#010101;
+  color:#fff;
+  overflow-x:hidden;
+  min-height:100vh;
+  position:relative;
+}
+
+/* ===== MOTION BACKGROUND ===== */
+.motion-bg{
+  position:fixed;top:0;left:0;width:200%;height:200%;
+  background:
+    radial-gradient(circle at 30% 20%,rgba(255,100,0,0.12),transparent 70%),
+    radial-gradient(circle at 70% 80%,rgba(255,0,255,0.1),transparent 70%),
+    radial-gradient(circle at 60% 40%,rgba(0,255,255,0.08),transparent 70%);
+  animation:moveBg 35s ease-in-out infinite alternate;
+  filter:blur(100px);
+  z-index:0;
+}
+@keyframes moveBg{
+  0%{transform:translate(0,0) scale(1);}
+  100%{transform:translate(-8%,-8%) scale(1.2);}
+}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;top:0;left:0;width:100%;
+  padding:15px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(10,10,10,0.75);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  z-index:1002;flex-wrap:wrap;
+}
+header img{
+  height:55px;
+  animation:pulse 3s infinite ease-in-out;
+  filter:drop-shadow(0 0 10px #ff4500b0);
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+}
+
+/* ===== DESKTOP NAV ===== */
+nav{
+  display:flex;gap:20px;align-items:center;white-space:nowrap;
+}
+nav a{
+  color:#00ffff; text-decoration:none; font-weight:500; position:relative; transition:0.3s;
+}
+nav a:hover, nav a.active{color:#ff00ff;}
+nav a::after{
+  content:''; position:absolute; left:0; bottom:-3px; height:2px;
+  background:linear-gradient(90deg,#0ff,#ff00a2,#ff0);
+  transform:scaleX(0); transform-origin:left; transition:0.3s;
+}
+nav a:hover::after{transform:scaleX(1);}
+nav a:hover{animation:jiggleLink 0.3s ease-in-out;}
+@keyframes jiggleLink{
+  0% {transform:translateX(0);}
+  25% {transform:translateX(-2px) translateY(-1px);}
+  50% {transform:translateX(2px) translateY(1px);}
+  75% {transform:translateX(-1px) translateY(-0.5px);}
+  100% {transform:translateX(0);}
+}
+
+/* ===== MOBILE TOGGLE ===== */
+.menu-toggle{
+  display:none; flex-direction:column; justify-content:space-between; width:30px; height:22px; cursor:pointer; z-index:1003;
+}
+.menu-toggle span{
+  display:block; height:3px; width:100%; background:#0ff; border-radius:2px; transition:all 0.3s ease;
+}
+.menu-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.menu-toggle.open span:nth-child(2){opacity:0;}
+.menu-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+/* ===== MOBILE NAV ===== */
+.mobile-nav{
+  display:flex; flex-direction:column; justify-content:center; align-items:center; gap:25px;
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.95); backdrop-filter:blur(10px);
+  transform:translateY(-100%); opacity:0; transition:0.4s ease; z-index:1001;
+}
+.mobile-nav.show{transform:translateY(0); opacity:1;}
+.mobile-nav a{
+  font-size:1.3rem; color:#0ff; text-decoration:none; position:relative;
+}
+.mobile-nav a:hover{color:#ff00a2; text-shadow:0 0 15px #0ff,0 0 25px #ff0;}
+
+/* ===== MAIN CONTENT ===== */
+main{
+  position:relative; z-index:1; min-height:100vh;
+  display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+  padding:0 10%; margin-top:120px;
+}
+h1{
+  font-family:'Orbitron',sans-serif; font-size:3rem;
+  background:linear-gradient(90deg,#ff4500,#ff0040,#ff00ff,#00ffff);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  text-shadow:0 0 20px rgba(255,80,0,0.4);
+  animation:fadeInDown 1.2s ease both;
+}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-40px);} to{opacity:1;transform:translateY(0);}}
+.subtitle{font-size:1.2rem; margin-top:15px; color:#ddd; animation:fadeUp 1.4s ease both 0.3s;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px);} to{opacity:1;transform:translateY(0);}}
+
+/* ===== CONTENT BOX ===== */
+.cook-box{
+  margin-top:50px; max-width:700px; background:rgba(15,15,15,0.85);
+  border:1px solid rgba(255,100,0,0.3); border-radius:20px; padding:40px;
+  box-shadow:0 0 25px rgba(255,100,0,0.2); backdrop-filter:blur(10px);
+  animation:boxGlow 3s infinite ease-in-out;
+}
+@keyframes boxGlow{
+  0%,100%{box-shadow:0 0 25px rgba(255,100,0,0.2);}
+  50%{box-shadow:0 0 40px rgba(255,100,0,0.4);}
+}
+.cook-box p{font-size:1.05rem; line-height:1.8; color:#f0f0f0;}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#050505; padding:30px 20px; text-align:center; color:#aaa;
+  border-top:1px solid rgba(255,255,255,0.1); position:relative; z-index:1;
+}
+footer a{color:#ff6600; text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+
+/* ===== PARTICLES ===== */
+.particle{
+  position:absolute; border-radius:50%; opacity:0.6; animation:floatParticles linear infinite;
+}
+.particle:nth-child(2){width:14px;height:14px;background:#ff4500;top:20%;left:10%;animation-duration:9s;}
+.particle:nth-child(3){width:18px;height:18px;background:#ff00ff;top:70%;left:80%;animation-duration:12s;}
+.particle:nth-child(4){width:12px;height:12px;background:#ff6600;top:40%;left:50%;animation-duration:14s;}
+@keyframes floatParticles{0%{transform:translateY(0) translateX(0);}50%{transform:translateY(-30px) translateX(20px);}100%{transform:translateY(0) translateX(0);}}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  header{padding:15px 25px; flex-direction:row; justify-content:space-between;}
+  nav{display:none;}
+  .menu-toggle{display:flex;}
+  h1{font-size:2.2rem;}
+  .cook-box{padding:25px;}
+}
+</style>
+</head>
+
+<body>
+<div class="motion-bg"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+
+<header>
+  <a href="index.html"><img src="VLOGO.jpg" alt="V Electronics Logo"></a>
+  <nav>
+    <a href="index.html">Home</a> 
+    <a href="information.html">Shop</a>
+    <a href="information.html">About</a>
+    <a href="information.html">Blogs</a>
+    <a href="information.html">Forum</a>
+    <a href="information.html">Enquiry</a>
+    <a href="information.html">Info</a>
+  </nav>
+  <div class="menu-toggle"><span></span><span></span><span></span></div>
+</header>
+
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="information.html">Shop</a>
+  <a href="information.html">About</a>
+  <a href="information.html">Blogs</a>
+  <a href="information.html">Forum</a>
+  <a href="information.html">Enquiry</a>
+  <a href="information.html">Info</a>
+</div>
+
+<main>
+  <h1>🔥 LET HIM COOK 🔥</h1>
+  <p class="subtitle">Where creativity burns brighter than code.</p>
+  <div class="cook-box">
+    <p>
+      Every innovation starts as a spark.  
+      Every spark needs fuel — time, patience, and focus.  
+      So when you see someone building, designing, or dreaming…  
+      don’t interrupt — just let him cook.
+    </p>
+    <p style="margin-top:15px;">
+      Because when the fire settles, what’s left is not smoke —  
+      it’s <b style="color:#ff6600;">evolution.</b>
+    </p>
+  </div>
+</main>
+
+<footer>
+  <p><b>V • ELECTRONICS</b> — Built for dreamers, by engineers.</p>
+  <p><a href="cooked.html">Explore</a> | <a href="cooked.html">Careers</a> | <a href="policies.html">Policies</a> | <a href="information.html">Information</a></p>
+  <p>© 2025 V Electronics — Built with ⚡ by innovators</p>
+</footer>
+
+<script>
+// Mobile toggle
+const toggle = document.querySelector('.menu-toggle');
+const mobileNav = document.querySelector('.mobile-nav');
+toggle.addEventListener('click',()=>{
+  toggle.classList.toggle('open');
+  mobileNav.classList.toggle('show');
+});
+document.querySelectorAll('.mobile-nav a').forEach(link=>{
+  link.addEventListener('click',()=>{
+    toggle.classList.remove('open');
+    mobileNav.classList.remove('show');
+  });
+});
+</script>
+</body>
+</html>

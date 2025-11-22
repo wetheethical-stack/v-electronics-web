@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="V Electronics Pvt Ltd — bringing high-tech electronics & robotics closer to you. Find contact info, working hours, and support details.">
+<title>Information | V Electronics Pvt Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; min-height:100%; overflow-x:hidden; font-family:'Poppins',sans-serif; color:#fff; background:#000000a9; position:relative; }
+
+/* ===== ANIMATED BACKGROUND ===== */
+.page-background {
+  position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden;
+}
+.page-background::before{
+  content:""; position:absolute; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(120deg,#0ff,#f0f,#ff0,#0ff);
+  background-size:600% 600%;
+  animation:gradientMove 25s ease infinite;
+  opacity:0.1; z-index:0;
+}
+@keyframes gradientMove{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.particle{position:absolute;border-radius:50%;opacity:0.6;animation:floatParticles linear infinite;}
+@keyframes floatParticles{0%{transform:translateY(0) translateX(0);}50%{transform:translateY(-40px) translateX(30px);}100%{transform:translateY(0) translateX(0);}}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed; top:0; width:100%; padding:10px 15px; display:flex; justify-content:space-between; align-items:center; backdrop-filter:blur(10px); background:rgba(0,0,0,0.85); z-index:1002;
+}
+header img{
+  width:70px; animation:logoGlow 2s infinite ease-in-out;
+}
+@keyframes logoGlow{
+  0%,100%{filter:drop-shadow(0 0 10px #0ff);}
+  50%{filter:drop-shadow(0 0 20px #0ff);}
+}
+
+/* ===== NAV ===== */
+nav{
+  display:flex; gap:15px;
+}
+nav a{
+  text-decoration:none; color:#0ff; margin:0 12px; font-weight:500; position:relative; transition:0.3s;
+}
+nav a:hover, nav a.active{color:#ff00ff;}
+nav a::after{
+  content:'';
+  position:absolute; left:0; bottom:-3px; width:100%; height:2px;
+  background:linear-gradient(90deg,#0ff,#ffa200);
+  transform:scaleX(0); transform-origin:right; transition:transform 0.3s;
+}
+nav a:hover::after, nav a.active::after{transform:scaleX(1); transform-origin:left;}
+
+/* ===== MOBILE MENU TOGGLE ===== */
+.menu-toggle{
+  display:none; flex-direction:column; justify-content:space-between; width:30px; height:22px; cursor:pointer; z-index:1003;
+}
+.menu-toggle span{
+  display:block; height:3px; width:100%; background:#0ff; border-radius:2px; transition:all 0.3s ease;
+}
+.menu-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.menu-toggle.open span:nth-child(2){opacity:0;}
+.menu-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+/* ===== MOBILE NAV ===== */
+.mobile-nav{
+  display:flex; flex-direction:column; justify-content:center; align-items:center; gap:20px;
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.95); backdrop-filter:blur(10px);
+  transform:translateY(-100%); opacity:0; transition:0.4s ease; z-index:1001;
+}
+.mobile-nav.show{transform:translateY(0); opacity:1;}
+.mobile-nav a{
+  font-size:1.2rem; color:#0ff; text-decoration:none; position:relative;
+}
+.mobile-nav a:hover::after, .mobile-nav a.active::after{transform:scaleX(1); transform-origin:left;}
+.mobile-nav a:hover{color:#fff; text-shadow:0 0 8px #0ff,0 0 15px #f0f;}
+
+/* ===== HERO ===== */
+.hero{padding-top:120px; text-align:center; position:relative; z-index:1;}
+.hero h1{font-size:2em; background:linear-gradient(90deg,#0ff,#ff0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 20px #0ff88; animation:glowText 2s infinite alternate;}
+.hero p{margin-top:10px; opacity:0.8;}
+
+/* ===== INFO CARDS ===== */
+.info-card{
+  max-width:700px; margin:30px auto; padding:25px; background:rgba(0,0,0,0.5); border:1px solid rgba(0,255,255,0.2); border-radius:18px;
+  text-align:center; box-shadow:0 0 15px rgba(0,255,255,0.15); backdrop-filter:blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; opacity:0; transform:scale(0.9); position:relative; z-index:5;
+}
+.info-card.visible{opacity:1; transform:scale(1); animation:neonFlickerPop 1.2s cubic-bezier(0.68,-0.55,0.265,1.55) forwards;}
+.info-card:hover{transform:translateY(-5px); box-shadow:0 0 25px rgba(255,0,255,0.3);}
+.info-card h2{color:#0ff; margin-bottom:15px; font-size:1.5em; text-shadow:0 0 8px #0ff88;}
+.info-card p{line-height:1.6em; color:#ddd; font-size:0.95em;}
+iframe{width:100%; height:250px; border:none; border-radius:12px; margin-bottom:15px;}
+@keyframes neonFlickerPop{
+  0%{opacity:0; transform:scale(0.8); box-shadow:0 0 0 rgba(0,255,255,0.15);}
+  40%{opacity:0.5; transform:scale(1.05); box-shadow:0 0 40px rgba(0,255,255,0.5);}
+  50%{opacity:0.2; transform:scale(1.03);}
+  60%{opacity:0.9; transform:scale(1.06);}
+  70%{opacity:0.5; transform:scale(1.02);}
+  100%{opacity:1; transform:scale(1); box-shadow:0 0 15px rgba(0,255,255,0.15);}
+}
+
+/* FOOTER */
+footer{text-align:center; padding:20px; font-size:0.9em; color:#aaa; border-top:1px solid rgba(0,255,255,0.1); margin-top:40px; position:relative; z-index:1;}
+
+/* ANIMATIONS */
+@keyframes glowText{from{text-shadow:0 0 10px #0ff;} to{text-shadow:0 0 25px #ff00ff;}}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{display:none;}
+  .menu-toggle{display:flex;}
+  header img{width:60px;}
+  .hero{padding-top:150px;}
+  .hero h1{font-size:1.8em;}
+  .info-card{width:90%; margin:20px auto;}
+}
+</style>
+</head>
+<body>
+
+<div class="page-background">
+  <div class="particle" style="width:12px;height:12px;background:#0ff;top:15%;left:20%;animation-duration:10s;"></div>
+  <div class="particle" style="width:18px;height:18px;background:#f0f;top:50%;left:10%;animation-duration:12s;"></div>
+  <div class="particle" style="width:10px;height:10px;background:#ff0;top:70%;left:70%;animation-duration:8s;"></div>
+  <div class="particle" style="width:22px;height:22px;background:#0ff;top:30%;left:80%;animation-duration:15s;"></div>
+</div>
+
+<header>
+  <a href="index.html"><img src="VLOGO.jpg" alt="V Electronics Pvt Ltd Logo"></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="information.html">Shop</a>
+    <a href="information.html">About</a>
+    <a href="information.html">Blogs</a>
+    <a href="information.html">Forum</a>
+    <a href="information.html">Enquiry</a>
+    <a href="information.html" class="active">Info</a>
+  </nav>
+  <div class="menu-toggle"><span></span><span></span><span></span></div>
+</header>
+
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="information.html">Shop</a>
+  <a href="information.html">About</a>
+  <a href="information.html">Blogs</a>
+  <a href="information.html">Forum</a>
+  <a href="information.html">Enquiry</a>
+  <a href="information.html" class="active">Info</a>
+</div>
+
+<section class="hero">
+  <h1>We Are Currently in Run to Deploy</h1>
+  <p>Please wait until we exist — the future is almost here ⚙️</p>
+</section>
+
+<section class="info-card scroll-animate">
+  <h2>Head Office – Pune</h2>
+  <div style="background-color:#333;height:250px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:15px;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d61721.32959145937!2d73.91520421929094!3d18.5952800569181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1762951745895!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <p><b>Address:</b><br>
+    V ELECTRONICS PVT LTD<br>
+    Warehouse #12, Magazine Chowk,<br>
+    Swaraj Colony, Shri Ganesh Colony,<br>
+    Dighi, Pune, Pimpri-Chinchwad,<br>
+    Maharashtra, India – 411015<br>
+    <b>State Code:</b> 27
+  </p>
+  <p><b>Phone:</b> +91 7892719496</p>
+  <p><b>Email:</b> care.invelectronicspvtltd@gmail.com</p>
+</section>
+
+<section class="info-card scroll-animate">
+  <h2>Customer Support</h2>
+  <p>Our support team is ready to assist you with queries, troubleshooting, or technical guidance.</p>
+  <p><b>Support Email:</b> care.invelectronicspvtltd@gmail.com</p>
+  <p><b>Sales Enquiries:</b> sales@velectronics.tech</p>
+  <p><b>Technical Assistance:</b> tech@velectronics.tech</p>
+  <p><b>Careers:</b> hr@velectronics.tech</p>
+  <p><b>General Queries:</b> info@velectronics.tech</p>
+</section>
+
+<section class="info-card scroll-animate">
+  <h2>Working Hours</h2>
+  <p>Monday – Friday: 9:00 AM – 7:00 PM</p>
+  <p>Saturday: 10:00 AM – 4:00 PM</p>
+  <p>Sunday & Public Holidays: Closed</p>
+</section>
+
+<section class="info-card scroll-animate">
+  <h2>Other Information</h2>
+  <p>We regularly host workshops, hackathons, and electronics meetups across India. Stay updated via our newsletter.</p>
+  <p>Follow us on social media for live updates and technical tips.</p>
+  <p>Subscribe to get early access to new products and innovations.</p>
+  <p>We value customer feedback — please share your suggestions for continuous improvement.</p>
+  <p>Our products are covered by standard warranty and support policies.</p>
+  <p>All transactions are secure, and your privacy is strictly maintained.</p>
+</section>
+
+<footer>
+  <p><b>V • ELECTRONICS</b> — Built for dreamers, by engineers. We don’t just make hardware — we redefine it.</p>
+  <p style="margin:10px 0;">
+    <a href="cooked.html">Explore</a> | <a href="cooked.html">Careers</a> | <a href="policies.html">Policies</a> | <a href="warehouse.html">warehouse</a>
+  </p>
+  <p>Email: hello@velectronics.tech | Phone: +91 90000 00000</p>
+  <p>© 2025 V Electronics — Built with ⚡ by innovators</p>
+</footer>
+
+<script>
+// Scroll animations for info cards
+const elements = document.querySelectorAll('.scroll-animate');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){entry.target.classList.add('visible');}
+  });
+},{threshold:0.2});
+elements.forEach(el => observer.observe(el));
+
+// Mobile toggle
+const toggle = document.querySelector('.menu-toggle');
+const mobileNav = document.querySelector('.mobile-nav');
+toggle.addEventListener('click',()=>{toggle.classList.toggle('open'); mobileNav.classList.toggle('show');});
+document.querySelectorAll('.mobile-nav a').forEach(link=>{
+  link.addEventListener('click',()=>{
+    toggle.classList.remove('open');
+    mobileNav.classList.remove('show');
+  });
+});
+</script>
+
+</body>
+</html>
